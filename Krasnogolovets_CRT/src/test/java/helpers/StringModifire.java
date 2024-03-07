@@ -1,2 +1,8 @@
-package helpers;public class StringModifire {
+package helpers;
+
+public class StringModifire {
+    public static String getUniqueString(String str){
+        return str;
+    }
+
 }
