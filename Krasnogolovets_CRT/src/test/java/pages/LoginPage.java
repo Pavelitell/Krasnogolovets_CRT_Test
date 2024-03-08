@@ -14,13 +14,16 @@ public class LoginPage extends BasePage {
     private WebElement YourPassTextBox;
     @FindBy(xpath = "//button[@class = 'button is-block is-info is-large is-fullwidth']")
     private WebElement signInButton;
-    @FindBy(xpath = "//*[@type='checkbox']") private WebElement rememberMeCheckbox;
-    @FindBy(xpath = "//*[@class='title']") public WebElement loginTitle;
+    @FindBy(xpath = "//*[@type='checkbox']")
+    private WebElement rememberMeCheckbox;
+    @FindBy(xpath = "//*[@class='title']")
+    public WebElement loginTitle;
+
     public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public String getLogintitle(){
+    public String getLogintitle() {
         return loginTitle.getText();
     }
 
@@ -31,6 +34,7 @@ public class LoginPage extends BasePage {
         signInButton.click();
         return this;
     }
+
     public LoginPage signInWithRememberMe(String email, String password) {
 
         YourEmailTextBox.sendKeys(email);

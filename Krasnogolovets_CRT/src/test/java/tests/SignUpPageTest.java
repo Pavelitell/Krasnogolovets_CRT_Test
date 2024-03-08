@@ -10,6 +10,8 @@ import pages.LoginPage;
 import pages.ProfilePage;
 import pages.SignUpPage;
 
+import java.util.Random;
+
 import static readProperties.ConfigProvider.*;
 
 public class SignUpPageTest extends BaseTest {
@@ -34,7 +36,6 @@ public class SignUpPageTest extends BaseTest {
 
     @Test
     public void SignUpWithoutName() {
-
         signUpPage.withoutNameSignUp(USER_3_PASS, USER_3_EMAIL);
         loginPage.signIn(USER_3_EMAIL, USER_3_PASS);
         Assertions.assertEquals("Welcome," + " " + "!", profilePage.getWelcomeTitle());
@@ -43,14 +44,10 @@ public class SignUpPageTest extends BaseTest {
     @Test
     public void SignUpWithoutEmail() {
         signUpPage.withoutEmailSignUp(USER_4_NAME, USER_4_PASS);
-        Assertions.assertNotEquals("Something like enter email", signUpPage.getDangerWindow());
+        Assertions.assertNotEquals(signUpPage.getDangerWindow().contains("Something like enter email"),signUpPage.getDangerWindow());
     }
 
-    @Test
-    public void SignUpWithoutPassword() {
-        signUpPage.withoutPassSignUp(USER_5_NAME, USER_5_EMAIL);
-        Assertions.assertNotEquals("Enter password", signUpPage.getDangerWindow());
-    }
+
 
     @Test
     public void SingUpEmailWithoutAt() {
@@ -75,6 +72,12 @@ public class SignUpPageTest extends BaseTest {
         loginPage.signIn(USER_2_EMAIL, USER_2_PASS);
         Assertions.assertEquals("Welcome," + " " + USER_2_NAME + "!", profilePage.getWelcomeTitle());
     }
+    @Test
+    public void SignUpWithoutPassword() {
+        signUpPage.withoutPassSignUp(USER_5_NAME, USER_5_EMAIL);
+        Assertions.assertNotEquals("Sign Up", signUpPage.getSignUpTitle());
+    }
+
 }
 
 

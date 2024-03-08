@@ -31,24 +31,17 @@ abstract public class BaseTest {
         driver.manage().timeouts().pageLoadTimeout(10, SECONDS);
         driver.manage().timeouts().implicitlyWait(15, SECONDS);
         BasePage.setDriver(driver);
-
-
     }
-
-
 
     @AfterEach
     public void cleanPage() {
         ProfilePage profilePage = new ProfilePage();
 
-           profilePage.signOut();
-
+        profilePage.signOut();
     }
-
 
     @AfterAll
     public static void tearDown() {
-
         driver.close();
         driver.quit();
     }

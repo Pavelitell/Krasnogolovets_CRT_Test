@@ -18,24 +18,22 @@ public class HomePage extends BasePage {
     private WebElement signUpButton;
 
 
-
-
-
-
     public HomePage() {
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
     }
-    public HomePage signUp(){
+
+    public HomePage signUp() {
         signUpButton.click();
         return this;
     }
-    public HomePage logIn(){
+
+    public HomePage logIn() {
         loginButton.click();
         return this;
     }
 
-    public boolean getHomeTitle(){
+    public boolean getHomeTitle() {
         return title.getText().equals("Test home page");
     }
 
